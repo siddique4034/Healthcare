@@ -26,7 +26,10 @@ SECRET_KEY = "django-insecure-e_p791q(9q8q)-0_3w1^=2dyvfv#_ir+rhetz21@s_3=rlry2r
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ln5shv-8000.csb.app']
+ALLOWED_HOSTS = [
+    'ln5shv-8000.csb.app',
+    "kx3v35-8000.csb.app",
+]
 
 
 # Application definition
@@ -102,7 +105,8 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-        'https://ln5shv-8000.csb.app'
+    'https://ln5shv-8000.csb.app',
+    'https://kx3v35-8000.csb.app',
 ]
 
 
@@ -133,6 +137,5 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LOGIN_URL = 'accounts/login'
 LOGIN_REDIRECT_URL = '/'
-
 
 

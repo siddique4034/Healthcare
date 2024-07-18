@@ -11,15 +11,14 @@ class BlogForm(forms.ModelForm):
         fields = ['user_type', 'title', 'photo', 'content', 'summary']
 
 class UserRegistrationForm(UserCreationForm):
-    user_type = models.CharField(max_length=2, choices=Blog.USER_TYPE)
+    is_doctor = forms.BooleanField(initial=False)
     class Meta:
         model = User
-        fields = ('username', 'email', 'password1', 'password2')
+        fields = ('username', 'email', 'password1', 'password2', 'is_doctor')
 
 
 
 
-Blog.USER_TYPE
 
 
 

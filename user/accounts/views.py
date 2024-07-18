@@ -8,7 +8,9 @@ from .models import Blog
 # Create your views here.
 @login_required
 def home_page(request):
-        return render(request, 'accounts/home_page.html')
+        if request.user.username=="Nafis":
+
+                return render(request, 'accounts/home_page.html')
 
 def register(request):
         if request.method == 'POST':
