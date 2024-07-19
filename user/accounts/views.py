@@ -9,9 +9,7 @@ from .models import Blog
 # Create your views here.
 @login_required
 def home_page(request):
-        if (request.user.username== "Nafis") or (request.user.username=="Siddique"):
-
-                return render(request, 'accounts/home_page.html')
+        return render(request, 'accounts/home_page.html')
 
 def register(request):
         if request.method == 'POST':
@@ -37,7 +35,12 @@ def dashboard(request):
 def create_blog(request):
         if (request.user.username== "Nafis") or (request.user.username=="Siddique"):
                 if request.method == 'POST':
-                        pass
+                        form = BlogForm(request.POST, request.FILES)
+                        if form.is_valid():
+                                blog = form.save(commit=False)
+                                blog.user = request.user
+                                blog.save()
+                                return redirect('../dashboard/')               
                 else:
                         form = BlogForm()
                         return render(request, 'accounts/create_blog.html', {'form': form})
