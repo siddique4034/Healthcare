@@ -48,5 +48,19 @@ def create_blog(request):
                 return HttpResponse ("Login as Doctor to create post !!!")
 
 
+@login_required
+def edit_blog(request, blog_id):
+        if (request.user.username== "Nafis") or (request.user.username=="Siddique"):
+                blog_post = get_object_or_404(Blog, pk=blog_id, user=request.user)
+                if request.method == 'POST':
+                        pass
+                else:
+                        form = BlogForm(instance=blog_post)
+                return render(request, 'accounts/edit_blog.html', {'form': form})
+
+
+
+
+
 
 
