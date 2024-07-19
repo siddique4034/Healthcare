@@ -1,11 +1,16 @@
-{% extends "accounts/base.html" %} {% block nav %}
-<a class="btn btn-primary">Profile</a>
-<a class="btn btn-success" href="{% url 'create_blog' %}"> Create Post </a>
-{% endblock %} {% block content %}
-<h1>Welcome to Doctor dashboard !</h1>
-{% for blog in blogs %}
-<div class="container bg-warning">
-  <h3>{{blog.title}}</h3>
-  <p>{{blog.content}}</p>
-</div>
-{% endfor %} {% endblock %}
+{% extends "accounts/base.html" %} 
+
+{% block nav %}
+  <a class="btn btn-primary">Profile</a>
+  <a class="btn btn-success" href="{% url 'create_blog' %}"> Create Post </a>
+{% endblock %} 
+
+{% block content %}
+  <h1>Welcome to Doctor dashboard !</h1>
+  {% for blog in blogs %}
+    <div class="container bg-warning">
+      <h3>{{blog.title}}</h3>
+      <p>{{blog.content}}</p>
+    </div>
+  {% endfor %} 
+{% endblock %}
