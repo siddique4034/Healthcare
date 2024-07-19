@@ -13,7 +13,7 @@ class Blog(models.Model):
   cataegory = models.CharField(max_length=13, choices=CATAEGORY, default='Immunization')
   user = models.ForeignKey(User, on_delete=models.CASCADE)
   title = models.CharField(max_length=30)
-  photo = models.ImageField(upload_to='photos/', blank=True, null=True)
+  photo = models.ImageField(upload_to='photos/', blank=True)
   content = models.TextField(max_length=1000)
   summary = models.TextField(max_length=200)
   is_draft = models.BooleanField(default=False)
