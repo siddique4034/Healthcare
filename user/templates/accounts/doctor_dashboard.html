@@ -9,7 +9,7 @@
   <p>{{blog.content}}</p>
   {% if blog.user == user %}
   <a class="btn btn-info" href="{% url 'edit_blog' blog.id %}">Edit</a>
-  <a class="btn btn-danger" href="#">Delete</a>
+  <a class="btn btn-danger" href="{% url 'delete_blog' blog.id %}">Delete</a>
   {% endif %}
 </div>
 {% endfor %} {% endblock %}

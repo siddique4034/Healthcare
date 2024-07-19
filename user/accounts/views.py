@@ -47,7 +47,6 @@ def create_blog(request):
         else:
                 return HttpResponse ("Login as Doctor to create post !!!")
 
-
 @login_required
 def edit_blog(request, blog_id):
         if (request.user.username== "Nafis") or (request.user.username=="Siddique"):
@@ -63,7 +62,13 @@ def edit_blog(request, blog_id):
                         form = BlogForm(instance=blog_post)
                 return render(request, 'accounts/edit_blog.html', {'form': form})
 
-
+@login_required
+def delete_blog(request, blog_id):
+        blog = get_object_or_404(Blog, pk=blog_id, user=request.user)
+        if request.method == 'POST':
+                blog.delete()
+                return redirect('../../dashboard')
+        return render(request, 'accounts/delete_confirmation_page.html', {'blog': blog})
 
 
 
