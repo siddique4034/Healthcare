@@ -1,16 +1,21 @@
 {% extends "accounts/base.html" %} {% block nav %}
 <a class="btn btn-primary">Profile</a>
 <a class="btn btn-success" href="{% url 'create_blog' %}"> Create Post </a>
+<a class="btn btn-info" href="{% url 'draft_blog' %}"> Draft </a>
+
 {% endblock %} {% block content %}
 <h1>Welcome to Doctor dashboard !</h1>
 {% for blog in blogs %}
 <div class="container bg-warning">
-  <h3>{{blog.title}}</h3>
+  <h3 style="color: black">{{blog.title}}</h3>
   <img src="{{ blog.photo.url }}" class="card-img-top" alt="..." />
-  <p>{{blog.content}}</p>
+  <button class="btn btn-secondary">{{blog.cataegory}}</button>
+
+  <p>{{blog.summary}}</p>
   {% if blog.user == user %}
   <a class="btn btn-info" href="{% url 'edit_blog' blog.id %}">Edit</a>
   <a class="btn btn-danger" href="{% url 'delete_blog' blog.id %}">Delete</a>
   {% endif %}
+  <br />
 </div>
 {% endfor %} {% endblock %}
