@@ -1,0 +1,8 @@
+{% extends "accounts/base.html" %} {% block content %}
+<h1>Welcome to Doctor dashboard !</h1>
+{% for blog in blogs %}
+<div class="container">
+  <h3>{{blog.title}}</h3>
+  <p>{{blog.content}}</p>
+</div>
+{% endfor %} {% endblock %}

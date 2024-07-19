@@ -8,7 +8,7 @@ from .models import Blog
 # Create your views here.
 @login_required
 def home_page(request):
-        if request.user.username=="Nafis":
+        if (request.user.username== "Nafis") or (request.user.username=="Siddique"):
 
                 return render(request, 'accounts/home_page.html')
 
@@ -24,4 +24,10 @@ def register(request):
                 form = UserRegistrationForm()
         return render(request, 'registration/register.html', {'form': form}) 
 
- 
+@login_required
+def dashboard(request):
+        blog = Blog.objects.all()
+        if (request.user.username== "Nafis") or (request.user.username=="Siddique"):
+                return render(request, 'accounts/doctor_dashboard.html', {'blogs': blog})
+        else:
+                return render(request, 'accounts/patient_dashboard.html', {'blogs': blog})
