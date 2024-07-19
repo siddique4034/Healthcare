@@ -6,6 +6,7 @@
 {% for blog in blogs %}
 <div class="container bg-warning">
   <h3>{{blog.title}}</h3>
+  <img src="{{ blog.photo.url }}" class="card-img-top" alt="..." />
   <p>{{blog.content}}</p>
   {% if blog.user == user %}
   <a class="btn btn-info" href="{% url 'edit_blog' blog.id %}">Edit</a>
