@@ -70,8 +70,7 @@ def delete_blog(request, blog_id):
                 return redirect('../../dashboard')
         return render(request, 'accounts/delete_confirmation_page.html', {'blog': blog})
 
-@login_required
-def draft_blog()
+
 
 
 
