@@ -5,10 +5,10 @@ from django.contrib.auth.models import User
 
 class Blog(models.Model):
   CATAEGORY = [
-    ('Immunization', 'Immunization'),
-    ('Mental health', 'mental_health'),
-    ('Covid 19', 'covid_19'),
-    ('Heart disease', 'heart_disease'),
+    ('immunization', 'Immunization'),
+    ('mental_health', 'Mental health'),
+    ('covid_19', 'Covid 19'),
+    ('heart_disease', 'Heart disease'),
   ]
   cataegory = models.CharField(max_length=13, choices=CATAEGORY, default='Immunization')
   user = models.ForeignKey(User, on_delete=models.CASCADE)
