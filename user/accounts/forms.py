@@ -8,7 +8,7 @@ from django.db import models
 class BlogForm(forms.ModelForm):
     class Meta:
         model = Blog
-        fields = ['user_type', 'title', 'photo', 'content', 'summary']
+        fields = ['cataegory', 'title', 'photo', 'content', 'summary', 'is_draft']
 
 class UserRegistrationForm(UserCreationForm):
     is_doctor = forms.BooleanField(initial=False)
