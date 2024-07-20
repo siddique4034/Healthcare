@@ -1,7 +1,11 @@
-{% extends "accounts/base.html" %} {% block content %}
-<h1>Are you sure you want to delete?</h1>
-<form method="post" enctype="multipart/form-data">
-  {% csrf_token %}
-  <button class="btn btn-danger" type="submit" method="post">Delelte</button>
-</form>
+{% extends "accounts/base.html" %} 
+
+{% block content %}
+  <h1>Are you sure you want to delete?</h1>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <button class="btn btn-danger" type="submit" method="post">
+      Delelte
+    </button>
+  </form>
 {% endblock %}
