@@ -4,15 +4,6 @@
 <h1>Welcome to Patient dashboard !</h1>
 {% for blog in blogs %}
 <div class="container bg-warning">
-  <h3>{{blog.title}}</h3>
-  <p>{{blog.content}}</p>
-</div>
-{% endfor %} {% endblock %} {% extends "accounts/base.html" %} {% block nav %}
-<a class="btn btn-primary">Profile</a>
-{% endblock %} {% block content %}
-<h1>Welcome to Patient dashboard !</h1>
-{% for blog in blogs %}
-<div class="container bg-warning">
   <h3 style="color: black">{{blog.title}}</h3>
   <img src="{{ blog.photo.url }}" class="card-img-top" alt="..." />
   <button class="btn btn-secondary">{{blog.cataegory}}</button>
