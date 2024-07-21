@@ -6,6 +6,10 @@
 <div class="container bg-secondary">
   <h3>{{doctor.first_name}}</h3>
   <p>Email: {{doctor.email}}</p>
-  <a class="btn btn-info" href="#">Select Doctor</a>
+  <a
+    class="btn btn-info"
+    href="{% url 'book_appointment' doctor.first_name doctor.last_name %}"
+    >Select Doctor</a
+  >
 </div>
 {% endfor %} {% endblock %}

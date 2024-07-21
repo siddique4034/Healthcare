@@ -86,11 +86,16 @@ def available_doctors(request):
 
 
 @login_required
-def book_appointment(request): # take argument of dr_fname and dr_lname
+def book_appointment(request, dr_fname, dr_lname):
         if (request.user.is_staff == False):
                 apt_form = AppointmentForm(request.POST)
                 if (request.method == 'POST'):
-                        pass
+                        doctor = f"{dr_fname} {dr_lname}"
+                        apt = apt_form.save(commit=False)
+                        apt.patient = request.user
+                        apt.doctor_appointed = doctor
+                        apt.save()
+                        return redirect('../../../dashboard')
                 else:
                         apt_form = AppointmentForm()
                         return render(request, 'accounts/appointment_form.html', {'form': apt_form})
