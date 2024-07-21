@@ -23,3 +23,24 @@ class Blog(models.Model):
   def __str__(self):
     return f'{self.user.username} - {self.title}'
  
+
+class Appointment(models.Model):
+  REQUIRED_SPECIALITY = [
+    ('immunization', 'Immunization'),
+    ('mental_health', 'Mental health'),
+    ('covid_19', 'Covid 19'),
+    ('heart_disease', 'Heart disease')
+  ]
+  patient = models.ForeignKey(User, on_delete=models.CASCADE)
+  doctor_appointed = models.CharField(max_length=30)
+  required_speciacity = models.CharField(max_length=13, choices=REQUIRED_SPECIALITY, default='Immunization')
+  appointment_date = models.DateField()
+  start_time = models.TimeField()
+  end_time = models.TimeField()
+
+  def __str__(self):
+    return f"{self.required_speciacity}"
+  
+
+
+
