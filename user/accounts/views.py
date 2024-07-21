@@ -4,7 +4,7 @@ from .forms import BlogForm, UserRegistrationForm
 from django.shortcuts import get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login
-from .models import Blog
+from .models import Blog, User
 
 # Create your views here.
 @login_required
@@ -26,14 +26,14 @@ def register(request):
 @login_required
 def dashboard(request):
         blog = Blog.objects.filter(is_draft=False)
-        if (request.user.username== "Nafis") or (request.user.username=="Siddique"):
+        if (request.user.is_staff == True):
                 return render(request, 'accounts/doctor_dashboard.html', {'blogs': blog})
         else:
                 return render(request, 'accounts/patient_dashboard.html', {'blogs': blog})
 
 @login_required
 def create_blog(request):
-        if (request.user.username== "Nafis") or (request.user.username=="Siddique"):
+        if (request.user.is_staff == True):
                 if request.method == 'POST':
                         form = BlogForm(request.POST, request.FILES)
                         if form.is_valid():
@@ -45,11 +45,11 @@ def create_blog(request):
                         form = BlogForm()
                         return render(request, 'accounts/create_blog.html', {'form': form})
         else:
-                return HttpResponse ("Login as Doctor to create post !!!")
+                return HttpResponse("Login as Doctor to create post !!!")
 
 @login_required
 def edit_blog(request, blog_id):
-        if (request.user.username== "Nafis") or (request.user.username=="Siddique"):
+        if (request.user.is_staff == True):
                 blog_post = get_object_or_404(Blog, pk=blog_id, user=request.user)
                 if request.method == 'POST':
                         form = BlogForm(request.POST, request.FILES, instance=blog_post)
@@ -69,6 +69,14 @@ def delete_blog(request, blog_id):
                 blog.delete()
                 return redirect('../../dashboard')
         return render(request, 'accounts/delete_confirmation_page.html', {'blog': blog})
+
+@login_required
+def available_doctors(request):      
+        if (request.user.is_staff == False):
+                doctors_list = User.objects.filter(is_staff=True)
+                return render(request, 'accounts/available_doctors.html', {'doctors': doctors_list})
+        else:
+                return HttpResponse("Login as Patient to see available doctors !!!!")
 
 
 

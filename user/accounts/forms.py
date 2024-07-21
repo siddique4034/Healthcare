@@ -12,9 +12,10 @@ class BlogForm(forms.ModelForm):
 
 class UserRegistrationForm(UserCreationForm):
     is_doctor = forms.BooleanField(initial=False)
+    #photos = forms.ImageField()
     class Meta:
         model = User
-        fields = ('username', 'email', 'password1', 'password2', 'is_doctor')
+        fields = ('username', 'email', 'password1', 'password2', 'first_name', 'last_name', 'date_joined', 'is_doctor')
 
 
 

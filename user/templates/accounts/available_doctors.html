@@ -1,0 +1,11 @@
+{% extends 'accounts/base.html' %} {% block nav %}
+<a class="btn btn-primary" href="{% url 'home_page' %}">Home page</a>
+{% endblock %} {% block content %}
+<h1>Doctors available for appointment</h1>
+{% for doctor in doctors %}
+<div class="container bg-secondary">
+  <h3>{{doctor.first_name}}</h3>
+  <p>Email: {{doctor.email}}</p>
+  <a class="btn btn-info" href="#">Select Doctor</a>
+</div>
+{% endfor %} {% endblock %}

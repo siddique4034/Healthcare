@@ -1,5 +1,10 @@
 {% extends "accounts/base.html" %} {% block content %}
 <h1>Welcome to healthcare</h1>
-<button type="button" class="btn btn-info align-middle">SignUp</button>
-<button type="button" class="btn btn-primary align-middle">Login</button>
+<a class="btn btn-info align-middle" href="{% url 'register' %}">SignUp</a>
+<a class="btn btn-primary align-middle" href="accounts/login">Login</a>
+<a class="btn btn-secondary align-middle" href="{% url 'available_doctors' %}"
+  >View doctor</a
+>
+
+<a class="btn btn-info align-middle" href="dashboard">Blogs</a>
 {% endblock %}
