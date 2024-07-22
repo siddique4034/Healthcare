@@ -13,7 +13,7 @@ def home_page(request):
                 dr_apt = Appointment.objects.filter(doctor_appointed=f"{request.user.first_name} {request.user.last_name}")
                 return render(request, 'accounts/home_page.html', {'apts': dr_apt})
          elif (request.user.is_staff == False):
-                pt_apt = Accounts.objects.filter(patient=request.user)
+                pt_apt = Appointment.objects.filter(patient=request.user)
                 return render(request, 'accounts/home_page.html', {'apts': pt_apt})
 
 
@@ -24,7 +24,7 @@ def register(request):
                         user = form.save(commit=False)
                         user.save()
                         login(request, user)
-                        return redirect('home_page')Appointment
+                        return redirect('home_page')
         else:
                 form = UserRegistrationForm()
         return render(request, 'registration/register.html', {'form': form}) 
