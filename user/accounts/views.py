@@ -9,7 +9,12 @@ from .models import Blog, User, Appointment
 # Create your views here.
 @login_required
 def home_page(request):
-        return render(request, 'accounts/home_page.html')
+         if (request.user.is_staff == True):
+                dr_apt = Appointment.objects.filter(doctor_appointed=f"{request.user.first_name} {request.user.last_name}")
+                return render(request, 'accounts/home_page.html', {'apts': dr_apt})
+         elif (request.user.is_staff == False):
+                pt_apt = Accounts.objects.filter(patient=request.user)
+                return render(request, 'accounts/home_page.html', {'apts': pt_apt})
 
 
 def register(request):
@@ -19,7 +24,7 @@ def register(request):
                         user = form.save(commit=False)
                         user.save()
                         login(request, user)
-                        return redirect('home_page')
+                        return redirect('home_page')Appointment
         else:
                 form = UserRegistrationForm()
         return render(request, 'registration/register.html', {'form': form}) 

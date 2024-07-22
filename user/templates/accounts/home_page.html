@@ -7,4 +7,14 @@
 >
 
 <a class="btn btn-info align-middle" href="dashboard">Blogs</a>
-{% endblock %}
+{% if (request.user.is_staff == True) %}
+<h1>Your next appointment</h1>
+{% for apt in apts %}
+<div class="container bg-secondary">
+  <h3>Patient: {{apt.patient}}</h3>
+  <p>Speciality required: {{apt.required_speciacity}}</p>
+  <p>Date: {{apt.required_speciacity}}</p>
+  <p>Start Time: {{apt.required_speciacity}}</p>
+  <p>End Time: {{apt.required_speciacity}}</p>
+</div>
+{% endfor %} {% endif %} {% endblock %}
