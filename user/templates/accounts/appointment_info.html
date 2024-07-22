@@ -1,0 +1,10 @@
+{% extends 'accounts/base.html' %} {% block content %}
+<h1>Your appointment info !</h1>
+{% for apt in info %}
+<div class="container bg-info">
+  <h3 style="color: black">Doctor: {{apt.doctor_appointed}}</h3>
+  <p>Date: {{apt.appointment_date}}</p>
+  <p>Start Time: {{apt.start_time}}</p>
+  <p>End Time: {{apt.end_time}}</p>
+</div>
+{% endfor %} {% endblock %}

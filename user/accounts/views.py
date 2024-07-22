@@ -4,7 +4,7 @@ from .forms import BlogForm, UserRegistrationForm, AppointmentForm
 from django.shortcuts import get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login
-from .models import Blog, User
+from .models import Blog, User, Appointment
 
 # Create your views here.
 @login_required
@@ -95,12 +95,17 @@ def book_appointment(request, dr_fname, dr_lname):
                         apt.patient = request.user
                         apt.doctor_appointed = doctor
                         apt.save()
-                        return redirect('../../../dashboard')
+                        return redirect(f'../../{apt.id}/appointment_info')
                 else:
                         apt_form = AppointmentForm()
                         return render(request, 'accounts/appointment_form.html', {'form': apt_form})
 
 
+@login_required
+def appointment_info(request, apt_id):
+        if (request.user.is_staff == False):
+                apt_info = Appointment.objects.filter(pk=apt_id)
+                return render(request, 'accounts/appointment_info.html', {'info': apt_info})
 
 
 
