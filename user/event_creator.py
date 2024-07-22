@@ -10,7 +10,7 @@ from googleapiclient.errors import HttpError
 SCOPES = ["https://www.googleapis.com/auth/calendar"]
 
 
-def main(apt, pt_email, dr_email):
+def create_event(apt, pt_email, dr_email):
       """Shows basic usage of the Google Calendar API.
         Prints the start and name of the next 10 events on the user's calendar.
           """
