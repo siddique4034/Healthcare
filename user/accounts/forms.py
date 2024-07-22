@@ -22,7 +22,7 @@ class UserRegistrationForm(UserCreationForm):
 class AppointmentForm(forms.ModelForm):
     class Meta:
         model = Appointment
-        fields = ['required_speciacity', 'appointment_date', 'start_time', 'end_time']
+        fields = ['required_speciacity', 'appointment_date', 'start_time']
 
 
 

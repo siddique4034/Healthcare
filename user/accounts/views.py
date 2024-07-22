@@ -5,6 +5,7 @@ from django.shortcuts import get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login
 from .models import Blog, User, Appointment
+from datetime import datetime, timedelta
 
 # Create your views here.
 @login_required
@@ -99,6 +100,10 @@ def book_appointment(request, dr_fname, dr_lname):
                         apt = apt_form.save(commit=False)
                         apt.patient = request.user
                         apt.doctor_appointed = doctor
+                        
+                        start_time = datetime.strptime(f"{apt.start_time}", "%H:%M:%S")
+                        end_time = start_time + timedelta(minutes=45)
+                        apt.end_time = end_time
                         apt.save()
                         return redirect(f'../../{apt.id}/appointment_info')
                 else:

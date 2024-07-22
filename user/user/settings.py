@@ -29,6 +29,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'ln5shv-8000.csb.app',
     "kx3v35-8000.csb.app",
+    'sk9qs3-8000.csb.app',
 ]
 
 
@@ -107,6 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
 CSRF_TRUSTED_ORIGINS = [
     'https://ln5shv-8000.csb.app',
     'https://kx3v35-8000.csb.app',
+    'https://sk9qs3-8000.csb.app',
 ]
 
 
@@ -137,5 +139,3 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LOGIN_URL = 'accounts/login'
 LOGIN_REDIRECT_URL = '/'
-
-

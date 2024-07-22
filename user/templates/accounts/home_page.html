@@ -1,5 +1,5 @@
 {% extends "accounts/base.html" %} {% block content %}
-<h1>Welcome to healthcare</h1>
+<h1>Healthcare</h1>
 <a class="btn btn-info align-middle" href="{% url 'register' %}">SignUp</a>
 <a class="btn btn-primary align-middle" href="accounts/login">Login</a>
 <a class="btn btn-secondary align-middle" href="{% url 'available_doctors' %}"
@@ -8,7 +8,9 @@
 
 <a class="btn btn-info align-middle" href="dashboard">Blogs</a>
 {% if request.user.is_staff %}
-<h1>Your next appointment</h1>
+<h1>Welcome to doctor dashboard !!! {{apt.doctor_appointed}}</h1>
+
+<h2>Your next appointment</h2>
 {% for apt in apts %}
 <div class="container bg-secondary">
   <h3>Patient: {{apt.patient}}</h3>
@@ -18,7 +20,9 @@
   <p>End Time: {{apt.end_time}}</p>
 </div>
 {% endfor %} {% endif %} {% if request.user.is_staff == False %}
-<h1>Your upcoming appointment</h1>
+<h1>Welcome to patient dashboard !!! {{apt.patient}}</h1>
+
+<h2>Your upcoming appointment</h2>
 {% for apt in apts %}
 <div class="container bg-secondary">
   <h3>Doctor: {{apt.doctor_appointed}}</h3>
