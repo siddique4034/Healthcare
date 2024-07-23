@@ -141,3 +141,14 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LOGIN_URL = 'accounts/login'
 LOGIN_REDIRECT_URL = '/'
+
+
+OAUTH2_PROVIDER = {
+    'SCOPES': {'calendar': 'Read/write access to Calendar'},
+    'CLIENT_ID': '575143479542-5kalh008ta6qvssk5rh5pjfmqmljgnkh.apps.googleusercontent.com',
+    'CLIENT_SECRET': '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',
+}
+
+GOOGLE_TOKEN_FILE = 'token.json'
+
+
