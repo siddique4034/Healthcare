@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login
 from .models import Blog, User, Appointment
 from datetime import datetime, timedelta
-from event_creator import create_event
+from event_creator import create_event #imported create_event function to create event on Google Calender
 
 
 # Create your views here.
@@ -109,7 +109,9 @@ def book_appointment(request, dr_fname, dr_lname):
                         apt.save()
                         pt_email = User.objects.filter(username=request.user)[0].email
                         dr_email = User.objects.filter(first_name=dr_fname)[0].email
-                        create_event(apt=apt, pt_email=pt_email, dr_email=dr_email)
+                        if apt.add_event:
+                            # Create event in google calender of both Patient and Doctor 
+                            create_event(apt=apt, pt_email=pt_email, dr_email=dr_email)
                         return redirect(f'../../{apt.id}/appointment_info')
                 else:
                         apt_form = AppointmentForm()

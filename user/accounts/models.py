@@ -38,6 +38,7 @@ class Appointment(models.Model):
   appointment_date = models.DateField()
   start_time = models.TimeField()
   end_time = models.TimeField()
+  add_event = models.BooleanField()
 
   def __str__(self):
     return f"{self.required_speciacity}"

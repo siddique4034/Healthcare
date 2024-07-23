@@ -20,9 +20,10 @@ class UserRegistrationForm(UserCreationForm):
 
 
 class AppointmentForm(forms.ModelForm):
+    add_event = forms.BooleanField(initial=False, required=False)
     class Meta:
         model = Appointment
-        fields = ['required_speciacity', 'appointment_date', 'start_time']
+        fields = ['required_speciacity', 'appointment_date', 'start_time', 'add_event']
 
 
 
