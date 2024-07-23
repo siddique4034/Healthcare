@@ -123,3 +123,6 @@ def appointment_info(request, apt_id):
                 return render(request, 'accounts/appointment_info.html', {'info': apt_info})
 
 
+
+
+
