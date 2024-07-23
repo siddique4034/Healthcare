@@ -7,7 +7,7 @@ from django.conf import settings
 from httplib2 import Credentials
 
 # Set up Django settings
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'myproject.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'user.settings')
 django.setup()
 
 # Scopes required for accessing Google Calendar API
