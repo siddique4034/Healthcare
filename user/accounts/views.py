@@ -107,8 +107,8 @@ def book_appointment(request, dr_fname, dr_lname):
                         end_time = start_time + timedelta(minutes=45)
                         apt.end_time = end_time
                         apt.save()
-                        pt_email = User.objects.filter(user=request.user).email
-                        dr_email = User.objects.filter(first_name=dr_fname).email
+                        pt_email = User.objects.filter(username=request.user)[0].email
+                        dr_email = User.objects.filter(first_name=dr_fname)[0].email
                         create_event(apt=apt, pt_email=pt_email, dr_email=dr_email)
                         return redirect(f'../../{apt.id}/appointment_info')
                 else:
