@@ -31,6 +31,7 @@ ALLOWED_HOSTS = [
     "kx3v35-8000.csb.app",
     'sk9qs3-8000.csb.app',
     '2rr55s-8000.csb.app',
+    '8vdyxy-8000.csb.app',
 ]
 
 
@@ -111,6 +112,7 @@ CSRF_TRUSTED_ORIGINS = [
     'https://kx3v35-8000.csb.app',
     'https://sk9qs3-8000.csb.app',
     'https://2rr55s-8000.csb.app',
+    'https://8vdyxy-8000.csb.app',
 ]
 
 
@@ -150,6 +152,3 @@ OAUTH2_PROVIDER = {
 }
 
 GOOGLE_TOKEN_FILE = 'token.json'
-
-
-
