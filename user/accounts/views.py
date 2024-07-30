@@ -98,21 +98,21 @@ def book_appointment(request, dr_fname, dr_lname):
         if (request.user.is_staff == False):
                 apt_form = AppointmentForm(request.POST)
                 if (request.method == 'POST'):
-                        doctor = f"{dr_fname} {dr_lname}"
-                        apt = apt_form.save(commit=False)
-                        apt.patient = request.user
-                        apt.doctor_appointed = doctor
-                        
-                        start_time = datetime.strptime(f"{apt.start_time}", "%H:%M:%S")
-                        end_time = start_time + timedelta(minutes=45)
-                        apt.end_time = end_time
-                        apt.save()
-                        pt_email = User.objects.filter(username=request.user)[0].email
-                        dr_email = User.objects.filter(first_name=dr_fname)[0].email
-                        if apt.add_event:
-                            # Create event in google calender of both Patient and Doctor 
-                            create_event(apt=apt, pt_email=pt_email, dr_email=dr_email)
-                        return redirect(f'../../{apt.id}/appointment_info')
+                        if apt_form.is_valid():
+                                 doctor = f"{dr_fname} {dr_lname}"
+                                 apt = apt_form.save(commit=False)
+                                 apt.patient = request.user
+                                 apt.doctor_appointed = doctor                
+                                 start_time = datetime.strptime(f"{apt.start_time}", "%H:%M:%S")
+                                 end_time = start_time + timedelta(minutes=45)
+                                 apt.end_time = end_time
+                                 apt.save()
+                                 pt_email = User.objects.filter(username=request.user)[0].email
+                                 dr_email = User.objects.filter(first_name=dr_fname)[0].email
+                                 if apt.add_event:
+                                 # Create event in google calender of both Patient and Doctor 
+                                         create_event(apt=apt, pt_email=pt_email, dr_email=dr_email)
+                                return redirect(f'../../{apt.id}/appointment_info')
                 else:
                         apt_form = AppointmentForm()
                         return render(request, 'accounts/appointment_form.html', {'form': apt_form})
