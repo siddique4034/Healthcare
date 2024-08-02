@@ -12,7 +12,7 @@ class BlogForm(forms.ModelForm):
 
 
 class UserRegistrationForm(UserCreationForm):
-    is_doctor = forms.BooleanField(initial=False)
+    is_doctor = forms.BooleanField(initial=False, required=False)
     #photos = forms.ImageField()
     class Meta:
         model = User
