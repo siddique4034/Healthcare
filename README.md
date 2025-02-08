@@ -1,4 +1,4 @@
-# Healthcare  
+# Healthcare management system
 
 A Django-based healthcare web application that connects patients with doctors. The platform allows doctors to share blog posts on various health topics, while patients can browse through these posts and book appointments with doctors.  
 
